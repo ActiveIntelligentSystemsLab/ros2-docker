@@ -1,0 +1,3 @@
+[submodule "workspace/src/get-started-ros2"]
+	path = workspace/src/get-started-ros2
+	url = https://github.com/youtalk/get-started-ros2.git
