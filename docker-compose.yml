@@ -1,0 +1,15 @@
+version: "2.3"
+services: 
+  build_image:
+    build: ./
+    image: aisl/ros2:dashing
+
+  talker:
+    container_name: talker
+    image: aisl/ros2:dashing
+    command: ros2 run demo_nodes_cpp talker
+
+  listener:
+    container_name: listener
+    image: aisl/ros2:dashing
+    command: ros2 run demo_nodes_cpp listener
