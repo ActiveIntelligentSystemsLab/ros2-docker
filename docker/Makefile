@@ -11,14 +11,17 @@ start:
 	docker start $(VERSION)
 run:
 	docker run -it \
-    		--net host \
-    		--runtime=nvidia \
-    		-e DISPLAY=$$DISPLAY \
-    		-v $$HOME/.Xauthority:/root/.Xauthority \
-    		-v $$PWD/../workspace/:/root/workspace/ \
+		--privileged \
+		--net host \
+		--runtime=nvidia \
+		-e DISPLAY=$$DISPLAY \
+		-e QT_X11_NO_MITSHM=1 \
+		-v $$HOME/.Xauthority:/root/.Xauthority \
+		-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+		-v $$PWD/../workspace/:/root/workspace/ \
 		--name $(CONTAINER_NAME) \
 		$(NAME):$(VERSION)
-					
+	
 contener=`docker ps -a -q`
 image=`docker images | awk '/^<none>/ { print $$3 }'`
 	
