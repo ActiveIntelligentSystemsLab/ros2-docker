@@ -9,7 +9,7 @@ FROM nvidia/opengl:1.0-glvnd-runtime-ubuntu18.04
 # Distribution of ROS2
 ARG distro="dashing"
 
-WORKDIR /tmp
+WORKDIR /root
 
 # Install necessary software for the installation of ROS2
 RUN apt-get update && apt-get install -y \ 
@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
                       curl \
                       gnupg2 \
                       lsb-release \
+                      git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*rm 
 
